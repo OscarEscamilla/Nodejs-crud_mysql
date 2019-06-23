@@ -10,6 +10,12 @@ const myConnection = require('express-myconnection');
 
 const app = express();//asiganmos el modulo a la constante app
 
+
+//importando rutas de routes
+
+const customerRoutes = require('./routes/customers');
+
+
 //CONFIGURACIONES DE EXPRESS
 
 // con proceess busca un puerto en el sistema operativo de no encontrar se ejecuta en el 3000
@@ -29,7 +35,7 @@ las peticiones son las rutas de nuestra app*/
 //nos ayuda a ver que tipo de peticion llega 
 app.use(morgan('dev'));
 
-// 
+// configuracion de base de datos
 app.use(myConnection(mysql, {
     host: 'localhost',
     user: 'root',
@@ -40,9 +46,12 @@ app.use(myConnection(mysql, {
 
 //ROUTES
 
+app.use('/', customerRoutes);
 
+//STATIC FILES
+app.use(express.static(path.join(__dirname, 'public')));
 
-
+// inicializacion del servidor
 app.listen(app.get('port'), () =>{// le decimos a la app que va ejecutarse en el puerto que se obtuvo de set 'port'
     console.log('esta jalando el server');
 });
