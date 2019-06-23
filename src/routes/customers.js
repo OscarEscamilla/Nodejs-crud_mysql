@@ -10,4 +10,5 @@ const controller = require('../controllers/customerController.js');
 //responde la peticion get de l ruta /
 router.get('/', controller.list);
 
+
 module.exports = router; //exportamos las rutas 
