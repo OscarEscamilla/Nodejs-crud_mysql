@@ -2,6 +2,7 @@ const express = require('express');// mandamos traer el modulo express
 const path = require('path');//modulo para unir paths
 const morgan = require('morgan');//middlewares
 const mysql = require('mysql');//modulo para conectar a mysql
+const myConnection = require('express-myconnection');
 
 
 
@@ -27,6 +28,18 @@ las peticiones son las rutas de nuestra app*/
 
 //nos ayuda a ver que tipo de peticion llega 
 app.use(morgan('dev'));
+
+// 
+app.use(myConnection(mysql, {
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    port: '3306',
+    database: 'crud_node'
+}, 'single'));
+
+//ROUTES
+
 
 
 
