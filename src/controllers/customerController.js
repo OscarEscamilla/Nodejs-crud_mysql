@@ -7,16 +7,15 @@ controller.list = (req, res) =>{
                 res.json(err);
             }
             console.log(filas);
-            //renderizamos la vista pasando como paremetro los datos obtenidos
             res.render('customer',{
-                data: filas
+                row: filas
             });
         });
     });
 };
 
 controller.save = (req, res) => {
-    console.log(req.body);
+    const data = req.body;
     req.getConnection((err, conn) =>{
         conn.query('INSERT INTO customers set ?',[data], (err, filas)=>{
             console.log(filas);
@@ -24,6 +23,17 @@ controller.save = (req, res) => {
         });
     });
     
+};
+
+controller.delete = (req, res) => {
+    const id = req.params.id;
+    console.log(id);
+    req.getConnection((err, conn) => {
+        conn.query('DELETE FROM customers WHERE id = ?', id, (err, filas) =>{
+            console.log(filas);
+            res.redirect('/');
+        });
+    });
 };
 
 
