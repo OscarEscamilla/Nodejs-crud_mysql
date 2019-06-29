@@ -21,8 +21,8 @@
                                     <td><%= row[i].address %></td>
                                     <td><%= row[i].phone %></td>
                                     <td>
-                                        <a href="/delete/<%= row[i].id %>" class="btn btn-danger btn-sm">Delete</a>
-                                        <a href="/edit/<%= row[i].id %>" class="btn btn-info btn-sm">Update</a>
+                                        <a href="/delete/<%= row[i].id %>" class="btn btn-danger btn-sm">Delete <i class="fas fa-trash"></i></a>
+                                        <a href="/edit/<%= row[i].id %>" class="btn btn-info btn-sm">Update <i class="fas fa-edit"></i></a>
                                     </td>
                                 </tr>
                             <% } %>
@@ -35,7 +35,7 @@
                 <div class="card">
                     <div class="card-header">
                         
-                        <h4 class="text-dark">New Customer</h4>
+                        <h4 class="text-dark">New Customer <i class="fas fa-clipboard"></i></h4>
                     </div>
                     <div class="card-body">
                         <form action="/add" method="post">
@@ -52,7 +52,7 @@
                                 <input type="text" name="phone" class="form-control form-control-sm">
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success btn-sm btn-block">Guardar</button>
+                                <button type="submit" class="btn btn-success btn-sm btn-block">Guardar <i class="fas fa-save"></i></button>
                             </div>
                         </form>
                     </div>
