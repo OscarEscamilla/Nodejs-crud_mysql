@@ -16,5 +16,7 @@ router.get('/delete/:id', controller.delete);
 
 router.get('/edit/:id', controller.edit);
 
+router.post('/update/:id', controller.update);
+
 
 module.exports = router; //exportamos las rutas 

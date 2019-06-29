@@ -7,7 +7,7 @@
                     Update
                 </div>
                 <div class="card-body">
-                    <form action="/update" method="post">
+                    <form action="/update/<%= user[0].id %>" method="post">
                         <div class="form-group">
                                 <label for="name">Nombre</label>
                                 <input type="text" name="name" class="form-control form-control-sm" value="<%= user[0].name %>">

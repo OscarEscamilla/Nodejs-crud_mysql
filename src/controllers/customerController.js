@@ -36,6 +36,7 @@ controller.delete = (req, res) => {
     });
 };
 
+//funcion para renderizar vista par actualizar con datos del usuario seleccionado
 controller.edit = (req, res) =>{
     const id = req.params.id;
     console.log(id);
@@ -45,6 +46,17 @@ controller.edit = (req, res) =>{
         });
     });
 
+};
+
+//funcion para actualizar los datos de un coustumer
+controller.update = (req, res) => {
+    const id = req.params.id;
+    const data = req.body;
+    req.getConnection((err, conn) => {
+        conn.query('UPDATE customers set ? WHERE id = ?', [data, id] ,(err, row) =>{
+            res.redirect('/');
+        });
+    });
 };
 
 
