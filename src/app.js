@@ -3,6 +3,7 @@ const path = require('path');//modulo para unir paths
 const morgan = require('morgan');//middlewares
 const mysql = require('mysql');//modulo para conectar a mysql
 const myConnection = require('express-myconnection');
+const body_parser = require('body-parser');
 
 
 
@@ -32,6 +33,7 @@ app.set('views', path.join(__dirname, 'views'));
 /*Los middlewares son funciones que se ejecutan antes de una peticion de usuario 
 las peticiones son las rutas de nuestra app*/
 
+
 //nos ayuda a ver que tipo de peticion llega 
 app.use(morgan('dev'));
 
@@ -43,6 +45,10 @@ app.use(myConnection(mysql, {
     port: '3306',
     database: 'crud_node'
 }, 'single'));
+
+//app.use(express.urlencoded({extended: false}));
+//metodo para entender los datos que vienen de el formulario
+app.use(body_parser.urlencoded({extended:true}));
 
 //ROUTES
 

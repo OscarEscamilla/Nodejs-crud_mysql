@@ -1,8 +1,35 @@
 <% include partials/_header %>
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 pt-4">
+                <table class="table table-bordered table-hover ">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Direccion</th>
+                            <th>Phone</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(data){ %>
+                            <% for(var i = 0; i < data.length; i++) { %>
+                                <tr>
+                                    <td><%= (i + 1) %></td>
+                                    <td><%= data[i].name %></td>
+                                    <td><%= data[i].address %></td>
+                                    <td><%= data[i].phone %></td>
+                                    <td>
+                                        <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                        <a href="" class="btn btn-info btn-sm">Update</a>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        <% } %>
+                    </tbody>
 
+                </table>
             </div>
             <div class="col-md-4 pt-4">
                 <div class="card">
@@ -11,7 +38,7 @@
                         <h4 class="text-dark">New Customer</h4>
                     </div>
                     <div class="card-body">
-                        <form action="/add" class="POST">
+                        <form action="/add" method="post">
                             <div class="form-group">
                                 <label for="name">Nombre</label>
                                 <input type="text" name="name" class="form-control form-control-sm">
@@ -25,7 +52,7 @@
                                 <input type="text" name="phone" class="form-control form-control-sm">
                             </div>
                             <div class="form-group">
-                                <input value="Save" type="submit" name="name" class="btn btn-success btn-sm btn-block">
+                                <button type="submit" class="btn btn-success btn-sm btn-block">Guardar</button>
                             </div>
                         </form>
                     </div>
