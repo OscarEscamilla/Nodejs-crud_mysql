@@ -36,5 +36,16 @@ controller.delete = (req, res) => {
     });
 };
 
+controller.edit = (req, res) =>{
+    const id = req.params.id;
+    console.log(id);
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * FROM customers WHERE id = ?', id, (err, row) =>{
+            res.render('customer_edit',{ user:row });
+        });
+    });
+
+};
+
 
 module.exports = controller;

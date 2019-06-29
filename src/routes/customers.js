@@ -14,5 +14,7 @@ router.post('/add', controller.save);
 
 router.get('/delete/:id', controller.delete);
 
+router.get('/edit/:id', controller.edit);
+
 
 module.exports = router; //exportamos las rutas 
